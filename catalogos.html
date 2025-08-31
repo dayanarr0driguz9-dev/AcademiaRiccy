@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ====== META BÁSICA ====== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ====== TÍTULO ====== -->
+  <title>productos — Catálogo</title>
+
+  <!-- ====== FUENTE E ICONOS ====== -->
+  <!-- Poppins para tipografía consistente -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome para íconos (tijeras, carrito, etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- ====== ESTILOS DEL SITIO ====== -->
+  <link rel="stylesheet" href="catalogo.css" />
+</head>
+
+<body>
+  <!-- ====== CAPA OSCURA DEL FONDO (tu estilo) ====== -->
+  <div class="overlay"></div>
+
+  <!-- =========================================================
+       HEADER — TU MISMO DISEÑO + BOTÓN DE CARRITO
+       - No se toca tu look & feel (negro/dorado).
+       - Se agrega el botón del carrito con badge.
+  ========================================================== -->
+  <header>
+    <!-- Logo + nombre comercial -->
+    <div class="logo-nombre">
+      <img src="LOGOOOO.png" alt="Logo" />
+      <span>Academia de Belleza Riccy's Salon Studio</span>
+    </div>
+
+    <!-- Navegación principal (pills) -->
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a class="active" href="catalogos.html">Productos</a>
+      <a href="historia.html">Historia</a>
+      <a href="reseñas.php">Reseñas</a>
+      <a href="registro.php" class="btn">Entrar</a>
+
+      <!-- Botón Carrito (mismo estilo pill dorado) -->
+      <button id="openCartBtn" class="btn-cart" aria-label="Ver carrito">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cartCount" class="badge">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- =========================================================
+       HERO — Portada de la página de catálogo
+  ========================================================== -->
+  <section class="hero hero--catalogo">
+    <!-- Columna de texto -->
+    <div class="texto">
+      <h1 class="efecto-titulo">Catálogo profesional</h1>
+      <p>Productos para Cabello, Uñas y Maquillaje. (Sin mostrar precios)</p>
+    </div>
+
+    <!-- Columna de imagen -->
+    <div class="imagen">
+      <img src="miss.jpeg" alt="Catálogo de productos" />
+    </div>
+  </section>
+
+  <!-- =========================================================
+       TOOLBAR — Filtros por categoría + Ordenar + Shuffle
+       * El <select> está estilizado en modo oscuro (se ve bien).
+  ========================================================== -->
+  <section class="toolbar container">
+    <!-- Botones de filtro (activan categorías) -->
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>Todos</span>
+      </button>
+
+      <button class="filter-btn" data-filter="cabello">
+        <i class="fa-solid fa-scissors"></i>
+        <span>Cabello</span>
+      </button>
+
+      <button class="filter-btn" data-filter="uñas">
+        <i class="fa-solid fa-hand-sparkles"></i>
+        <span>Uñas</span>
+      </button>
+
+      <button class="filter-btn" data-filter="maquillaje">
+        <i class="fa-solid fa-brush"></i>
+        <span>Maquillaje</span>
+      </button>
+    </div>
+
+    <!-- Orden + Shuffle -->
+    <div class="sorts">
+      <!-- Contenedor del select (oscuro + flecha custom) -->
+      <label class="sort-label" title="Ordenar productos">
+        <i class="fa-solid fa-arrow-down-wide-short" aria-hidden="true"></i>
+        <select id="sortSelect" aria-label="Ordenar">
+          <option value="featured">Destacados</option>
+          <option value="name-asc">Nombre: A → Z</option>
+          <option value="name-desc">Nombre: Z → A</option>
+          <option value="trend">Tendencia</option>
+        </select>
+      </label>
+
+      <!-- Shuffle (orden aleatorio para un toque fresco) -->
+      <button id="shuffleBtn" class="shuffle-btn" title="Orden aleatorio">
+        <i class="fa-solid fa-shuffle"></i>
+        <span>Shuffle</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       GRID DE PRODUCTOS — VACÍO (JS inyecta las tarjetas)
+  ========================================================== -->
+  <main class="container">
+    <div id="productsGrid" class="products-grid"></div>
+  </main>
+
+  <!-- =========================================================
+       DRAWER DEL CARRITO — SIN PRECIOS
+  ========================================================== -->
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <!-- Encabezado del carrito -->
+    <div class="cart-header">
+      <h2><i class="fa-solid fa-bag-shopping"></i> Tu carrito</h2>
+
+      <!-- Cerrar drawer -->
+      <button class="close-cart" id="closeCartBtn" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Lista dinámica de ítems (renderizada por JS) -->
+    <div class="cart-items" id="cartItems"></div>
+
+    <!-- Acciones del carrito -->
+    <div class="cart-footer">
+      <div class="cart-actions">
+        <!-- Vaciar carrito -->
+        <button id="clearCartBtn" class="btn-outline">
+          <i class="fa-solid fa-trash-can"></i>
+          <span>Vaciar</span>
+        </button>
+
+        <!-- Comprar por WhatsApp todo el carrito -->
+        <button id="checkoutBtn" class="btn-gold">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Comprar por WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Fondo oscuro detrás del drawer -->
+  <div id="overlay" class="overlay-cart" hidden></div>
+
+  <!-- ====== LÓGICA DEL CATÁLOGO/CARRITO ====== -->
+  <script src="catalogo.js"></script>
+</body>
+</html>

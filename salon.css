@@ -1,0 +1,204 @@
+:root {
+  --bg: #0b0b0b;
+  --gold: #d4af37;
+  --text: #f5f5f5;
+  --muted: #c9c9c9;
+  --radius: 14px;
+  --shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Header */
+header {
+  background: rgba(0,0,0,.8);
+  border-bottom: 1px solid rgba(212,175,55,.3);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo-nombre {
+  display: flex; align-items: center; gap: 10px;
+}
+header nav a {
+  margin: 0 10px;
+  color: var(--text);
+  text-decoration: none;
+}
+header nav a:hover, header nav .active {
+  color: var(--gold);
+}
+
+/* Secciones */
+.seccion {
+  padding: 50px 20px;
+  text-align: center;
+}
+.titulo-seccion {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--gold);
+}
+.subtitulo {
+  margin: 20px 0;
+  font-size: 22px;
+  color: var(--text);
+}
+
+/* Trabajos */
+/* Grid de trabajos */
+.trabajos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+  gap: 20px;
+  margin: 20px 0 40px;
+  justify-items: center; /* centra las tarjetas */
+}
+
+.trabajo {
+  background: #121212;
+  border: 1px solid rgba(212,175,55,.25);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  width: 100%;
+  max-width: 240px; /* ancho máximo de cada tarjeta */
+}
+
+/* Imágenes de trabajos */
+.trabajo img {
+  width: 100%;
+  height: 200px;       /* altura fija */
+  object-fit: cover;   /* recorta pero mantiene proporción */
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .trabajos-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 en tablet */
+  }
+}
+@media (max-width: 600px) {
+  .trabajos-grid {
+    grid-template-columns: 1fr; /* 1 en móvil */
+  }
+}
+.trabajo h4 {
+  margin: 10px 0;
+}
+.btn {
+  background: var(--gold);
+  border: none;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+/* Horarios */
+.schedule__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.schedule__table th,
+.schedule__table td {
+  border: 1px solid rgba(212,175,55,.25);
+  padding: 12px;
+}
+.schedule__table th {
+  background: rgba(212,175,55,.15);
+  color: var(--gold);
+}
+
+/* Reservar */
+#form-cita {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 10px;
+}
+#form-cita input {
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(212,175,55,.3);
+}
+
+/* Footer */
+.site-footer {
+  background: rgba(0,0,0,.85);
+  border-top: 1px solid rgba(212,175,55,.3);
+  padding: 16px;
+  text-align: center;
+  color: var(--muted);
+}
+
+
+/* Evita que el logo del header se agrande y rompa el layout */
+header .logo-nombre img{
+  width: clamp(40px, 4.8vw, 56px);  /* tamaño controlado */
+  height: clamp(40px, 4.8vw, 56px);
+  object-fit: contain;
+  display: block;           /* quita espacio extra de imagen inline */
+  flex-shrink: 0;           /* no se comprime ni estira */
+}
+
+/* Asegura que el header alinee todo en una fila y no “salte” */
+header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 12px 24px;
+}
+header .logo-nombre{display:flex; align-items:center; gap:12px;}
+header nav{display:flex; gap:18px; align-items:center; flex-wrap:wrap;}
+
+/* ====== RESPONSIVE GENERAL ====== */
+
+/* Laptop/Tablet horizontal */
+@media (max-width: 1200px){
+  .trabajos-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Tablet */
+@media (max-width: 1024px){
+  .trabajos-grid { grid-template-columns: repeat(2, 1fr); }
+  nav { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .schedule__table { font-size: 14px; }
+}
+
+/* Móvil grande */
+@media (max-width: 768px){
+  .trabajos-grid { grid-template-columns: 1fr; }
+  header { flex-wrap: wrap; text-align: center; }
+  header .logo-nombre { justify-content: center; margin-bottom: 10px; }
+  header .logo-nombre span { font-size: 14px; }
+  nav { width: 100%; justify-content: center; }
+  nav a { padding: 8px; display: block; }
+  #form-cita { max-width: 100%; padding: 0 10px; }
+  .btn { width: 100%; }
+}
+
+/* Móvil pequeño */
+@media (max-width: 480px){
+  .trabajo img { height: 160px; }
+  .titulo-seccion { font-size: 20px; }
+  .subtitulo { font-size: 16px; }
+  .schedule__table th, 
+  .schedule__table td { padding: 8px; font-size: 13px; }
+  footer { font-size: 13px; padding: 12px; }
+}

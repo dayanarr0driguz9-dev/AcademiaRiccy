@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Servicios | Academia & Salón</title>
+
+  <!-- Fuente y estilos -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="servicios.css" />
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Favicon opcional -->
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body class="theme-dark-gold">
+
+  <!-- ====== HEADER (mismo estilo base) ====== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand">
+        <img src="LOGOOOO.png" alt="Logo" class="brand__logo">
+        <span class="brand__name"> Academia de Belleza Riccy’S Salon Studio</span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="menu"><i class="fa-solid fa-bars"></i></button>
+        <ul id="menu" class="nav__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="catalogos.html">Productos</a></li>
+          <li><a href="historia.html">Historia</a></li>
+          <li><a href="reseñas.php">Reseñas</a></li>
+        
+           <li> <a href="registro.php">Entrar</a> </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====== HERO con 3 “burbujas” (Academia, Salón, Productos) ====== -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 class="hero__title">Nuestros Servicios</h1>
+      <p class="hero__subtitle">Formación profesional, atención de belleza y productos especializados.</p>
+
+      <div class="service-grid" id="servicios" role="list">
+        <!-- Academia -->
+        <article class="service-card" role="listitem">
+          <div class="service-card__icon">
+            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+          </div>
+          <h3 class="service-card__title">Academia</h3>
+          <p class="service-card__text">Cursos de uñas, maquillaje y un año completo en belleza.</p>
+          <a class="btn btn--ghost" href="academia.html">Más info</a>
+        </article>
+
+        <!-- Salón -->
+        <article class="service-card" role="listitem">
+          <div class="service-card__icon">
+            <i class="fa-solid fa-spa" aria-hidden="true"></i>
+          </div>
+          <h3 class="service-card__title">Salón</h3>
+          <p class="service-card__text">Maquillaje, uñas, peinado, tratamientos y más.</p>
+          <a class="btn btn--ghost" href="salon.html">Más info</a>
+        </article>
+
+        <!-- Productos -->
+        <article class="service-card" role="listitem">
+          <div class="service-card__icon">
+            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+          </div>
+          <h3 class="service-card__title">Productos</h3>
+          <p class="service-card__text">Venta de productos profesionales seleccionados.</p>
+          <a class="btn btn--ghost" href="catalogos.html">Más info</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== UBICACIONES (dos Google Maps) ====== -->
+  <section class="locations" id="ubicaciones" aria-labelledby="ubicaciones-title">
+    <div class="container">
+      <h2 id="ubicaciones-title" class="section-title">Ubicaciones</h2>
+
+      <div class="map-grid">
+        <!-- Mapa 1 -->
+        <div class="map-card">
+          <h3 class="map-card__title">Academia y Salon en Santa Ana</h3>
+          <!-- Reemplaza src del iframe por tu URL de embed de Google Maps -->
+          <div class="map-card__frame">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3841.9024893711!2d-87.05819992589818!3d15.650180150521908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f68fb006e041d67%3A0xc996bc94cb8a4637!2sAcademia%20riccy!5e0!3m2!1sen!2shn!4v1755041982436!5m2!1sen!2shn"
+             width="600"
+              height="450"
+               style="border:0;"
+                allowfullscreen=""
+                 loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <p class="map-card__info">Barrio Los proceres, Desvio Caisesa • Tel. +504 3180-4540</p>
+        </div>
+
+        <!-- Mapa 2 -->
+        <div class="map-card">
+          <h3 class="map-card__title">Academia y Salon en Roatán</h3>
+          <div class="map-card__frame">
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3828.5344655557246!2d-86.47220182588298!3d16.34671423195167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f69e50008635c43%3A0x49b60de5fd112797!2sAcademia%20y%20Sal%C3%B3n%20Riccy!5e0!3m2!1sen!2shn!4v1755041708005!5m2!1sen!2shn"
+          width="600"
+           height="450"
+            style="border:0;"
+             allowfullscreen=""
+              loading="lazy"
+               referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <p class="map-card__info">Roatan, Los fuertes, Edificio los cubanos • Tel. +504 3180-4540</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== HORARIO ====== -->
+  <section class="schedule" id="horario" aria-labelledby="horario-title">
+    <div class="container">
+      <h2 id="horario-title" class="section-title">Horario de Atención</h2>
+
+      <div class="note"></div>
+
+      <div class="table-wrap">
+        <table class="schedule__table">
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Apertura</th>
+              <th>Cierre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Lunes</td><td>08:00 am</td><td>5:00 pm</td></tr>
+            <tr><td>Martes</td><td>08:00 am</td><td>5:00 pm</td></tr>
+            <tr><td>Miércoles</td><td>08:00 am</td><td>5:00 pm</td></tr>
+            <tr><td>Jueves</td><td>08:00 am</td><td>5:00 pm</td></tr>
+            <tr><td>Viernes</td><td colspan="2">Cerrado</td></tr>
+            <tr><td>Sábados</td><td>08:00 am</td><td>5:00 pm</td></tr>
+            <tr><td>Domingos</td><td>08:00 am</td><td>4:00 pm</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACTO (ancla para botones “Más info”) ====== -->
+  <section class="contact" id="contacto" aria-labelledby="contacto-title">
+    <div class="container contact__inner">
+      <h2 id="contacto-title" class="section-title">Contáctanos</h2>
+      <p>Escríbenos por WhatsApp y agenda tu cita o pide información:</p>
+      <a class="btn btn--primary" href="https://wa.me/50431804540" target="_blank" rel="noopener">Abrir WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Riccy Sarmiento • Todos los derechos reservados</small>
+    </div>
+  </footer>
+
+  <script src="servicios.js"></script>
+</body>
+</html>

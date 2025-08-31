@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academia | Riccy's Salon Studio</title>
+
+  <!-- Fuente y estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="academia.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <!-- Capa oscura sobre el fondo -->
+  <div class="overlay"></div>
+
+  <!-- ===== HEADER (idéntico al de Golden Agency) ===== -->
+  <header>
+    <div class="logo-nombre">
+      <img src="LOGOOOO.png" alt="Logo" />
+      <span>Academia de Belleza Riccy's Salon Studio</span>
+    </div>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="catalogos.html">Productos</a>
+      <a href="historia.html">Historia</a>
+      <a href="reseñas.php">Reseñas</a>
+      <a href="registro.php" class="btn">Entrar</a>
+    </nav>
+  </header>
+
+
+  <!-- ===== PRESENTACIÓN ===== -->
+  <section class="presentacion">
+    <div class="container">
+      <h2 class="titulo-seccion"><i class="fas fa-graduation-cap"></i> Nuestra Academia</h2>
+      <p>
+        Formamos estilistas altamente capacitados con programas integrales y certificaciones internacionales,
+        combinando teoría, práctica y ética profesional.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== GALERÍA DE FOTOS ===== -->
+  <section class="galeria">
+    <div class="container">
+      <h3 class="subtitulo"><i class="fas fa-images"></i> Galería</h3>
+      <div class="grid-fotos">
+        <img src="acas1.jpeg" alt="Clase práctica en salón">
+        <img src="acas2.jpeg" alt="Alumnas en formación">
+        <img src="acas3.jpeg" alt="Técnicas de belleza">
+        <img src="acas7.jpeg" alt="Certificación de alumnas">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAMA ESTILISMO ===== -->
+  <section class="cursos">
+    <div class="container">
+      <div class="card-servicio">
+        <h3><i class="fas fa-book-open"></i> Certificación Profesional en Estilismo Integral – 11 Meses</h3>
+        <p>
+          Un programa integral diseñado para desarrollar habilidades desde nivel principiante hasta técnicas avanzadas del mundo de la belleza.
+          Iniciamos desde cero, con bases sólidas en teoría y práctica.
+        </p>
+        <h4>Módulos iniciales:</h4>
+        <ul>
+          <li><i class="fas fa-user-check"></i> Ética Profesional y Trato al Cliente</li>
+          <li><i class="fas fa-globe"></i> Relaciones Internacionales en el Mundo de la Belleza</li>
+        </ul>
+        <h4>Parte práctica:</h4>
+        <ul>
+          <li><i class="fas fa-water"></i> Lavado de cabello con diagnóstico previo</li>
+          <li><i class="fas fa-paint-brush"></i> Técnicas avanzadas como balayage de alto impacto</li>
+        </ul>
+        <p>
+          Durante el proceso, nuestras alumnas se preparan en más de <b>35 temas esenciales</b> del área de belleza, 
+          bajo un modelo de alta exigencia y con la guía de <b>maestras certificadas</b>.
+        </p>
+        <p>
+          Además, cuentan con el acompañamiento de:
+        </p>
+        <ul>
+          <li><i class="fas fa-chalkboard-teacher"></i> Educadores internacionales</li>
+          <li><i class="fas fa-user-tie"></i> Técnicos nacionales</li>
+          <li><i class="fas fa-certificate"></i> Seminarios especializados</li>
+        </ul>
+        <p>
+          Al finalizar cada módulo, reciben certificaciones respaldadas por marcas reconocidas internacionalmente:
+          <b>TRUSS Professional · Rucha Professional · NB Professional · Erayba · Cadiveu · MC Nails</b>.
+        </p>
+      </div>
+
+      <!-- ===== CURSOS DE UÑAS ===== -->
+      <div class="card-servicio">
+        <h3><i class="fas fa-hand-sparkles"></i> Certificaciones en Uñas – Técnicas Profesionales</h3>
+        <p>
+          Además de nuestro programa de estilismo, ofrecemos certificaciones especializadas en técnicas de uñas, 
+          ideales para quienes desean perfeccionar o iniciar su carrera en acrílico y rubber gel.
+        </p>
+        <h4>Módulos disponibles:</h4>
+        <ul>
+          <li><i class="fas fa-star"></i> Curso de Uñas Acrílicas – Nivel Básico e Intermedio (Duración: 2 meses)</li>
+          <li><i class="fas fa-star-half-alt"></i> Curso de Uñas Acrílicas – Nivel Avanzado</li>
+        </ul>
+        <p>
+          Todos nuestros cursos están respaldados por <b>MC NAILS</b>, garantizando productos de calidad, técnicas de vanguardia 
+          y certificaciones reconocidas internacionalmente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTÓN DE SUSCRIPCIÓN ===== -->
+  <section class="suscripcion">
+    <div class="container">
+      <a href="registro.php" class="btn-suscribir"><i class="fas fa-envelope-open-text"></i> Matriculate a la Academia</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER (igual al de Golden Agency) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Riccy Sarmiento • Todos los derechos reservados</small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+/* ===== VARIABLES ===== */
+:root{
+  --bg: #0b0b0b;
+  --gold: #d4af37;
+  --gold-2: #f1d27a;
+  --text: #f5f5f5;
+  --muted: #c9c9c9;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 16px;
+}
+
+/* ===== RESETEO ===== */
+*{box-sizing:border-box}
+body,html{margin:0;padding:0;height:100%}
+body{
+  font-family: "Poppins", sans-serif;
+  color:var(--text);
+  background: 
+    linear-gradient(rgba(0,0,0,.88), rgba(0,0,0,.88)), 
+    url("academia.jpeg") center/cover no-repeat fixed;
+}
+
+/* ===== OVERLAY ===== */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:-1;
+}
+
+/* ===== HEADER ===== */
+header{
+  display:flex; align-items:center; justify-content:space-between;
+  background:rgba(0,0,0,.7);
+  padding:15px 30px;
+  border-bottom:1px solid rgba(212,175,55,.25);
+  position:sticky; top:0; z-index:100;
+}
+.logo-nombre{display:flex; align-items:center; gap:10px; color:var(--text); font-weight:600}
+.logo-nombre img{height:45px}
+nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+}
+nav a:hover, nav a.active{color:var(--gold)}
+nav .btn{
+  background:var(--gold);
+  padding:8px 16px;
+  border-radius:20px;
+  color:#000;
+  font-weight:600;
+}
+
+/* ===== PRESENTACIÓN ===== */
+.titulo-seccion{
+  text-align:center;
+  font-size:2.5rem;
+  color:var(--gold);
+  margin-bottom:10px;
+}
+.presentacion p{
+  text-align:center;
+  color:var(--muted);
+  font-size:1.2rem;
+  margin-bottom:30px;
+}
+
+/* ===== GALERÍA ===== */
+.subtitulo{
+  text-align:center;
+  font-size:1.8rem;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+.grid-fotos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+}
+.grid-fotos img{
+  width:100%;
+  border-radius:12px;
+  border:2px solid var(--gold);
+  transition:transform .3s;
+}
+.grid-fotos img:hover{transform:scale(1.05)}
+
+/* ===== CURSOS ===== */
+.card-servicio{
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--gold);
+  border-radius:12px;
+  padding:20px;
+  margin:20px 0;
+  text-align: center;
+}
+.card-servicio ul{
+    list-style: none;
+}
+.card-servicio h3{color:var(--gold); margin-bottom:10px}
+.card-servicio p{color:var(--text); margin-bottom:10px}
+
+/* ===== BOTÓN SUSCRIPCIÓN ===== */
+.suscripcion{text-align:center;margin:50px 0}
+.btn-suscribir{
+  display:inline-block;
+  background:var(--gold);
+  color:#000;
+  padding:15px 30px;
+  font-size:1.2rem;
+  font-weight:600;
+  border-radius:30px;
+  text-decoration:none;
+  transition:.3s;
+}
+.btn-suscribir:hover{background:#b8912e}
+
+/* ===== FOOTER ===== */
+.site-footer{
+  border-top:1px solid rgba(212,175,55,.25);
+  background:rgba(0,0,0,.85);
+  padding:18px 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* ====== RESPONSIVE GENERAL ====== */
+
+/* Laptop/Tablet horizontal */
+@media (max-width: 1200px){
+  .trabajos-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Tablet */
+@media (max-width: 1024px){
+  .trabajos-grid { grid-template-columns: repeat(2, 1fr); }
+  nav { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .schedule__table { font-size: 14px; }
+}
+
+/* Móvil grande */
+@media (max-width: 768px){
+  .trabajos-grid { grid-template-columns: 1fr; }
+  header { flex-wrap: wrap; text-align: center; }
+  header .logo-nombre { justify-content: center; margin-bottom: 10px; }
+  header .logo-nombre span { font-size: 14px; }
+  nav { width: 100%; justify-content: center; }
+  nav a { padding: 8px; display: block; }
+  #form-cita { max-width: 100%; padding: 0 10px; }
+  .btn { width: 100%; }
+}
+
+/* Móvil pequeño */
+@media (max-width: 480px){
+  .trabajo img { height: 160px; }
+  .titulo-seccion { font-size: 20px; }
+  .subtitulo { font-size: 16px; }
+  .schedule__table th, 
+  .schedule__table td { padding: 8px; font-size: 13px; }
+  footer { font-size: 13px; padding: 12px; }
+}

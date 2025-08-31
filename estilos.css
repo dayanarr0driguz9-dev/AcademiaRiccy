@@ -1,0 +1,448 @@
+/* ==========================
+   RESETEO Y BASE TIPOGRÁFICA
+   ========================== */
+
+/* Quita márgenes/paddings por defecto, define el box model
+   y establece Poppins como fuente global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ==========================
+   FONDO, COLOR Y OVERLAY
+   ========================== */
+
+/* Fondo de toda la página: imagen a pantalla completa, centrada y fija;
+   color del texto por defecto blanco, y posicionamiento relativo para capas */
+body {
+  background: url('img1.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  position: relative;
+}
+
+/* Capa oscura encima del fondo para mejorar el contraste de lectura.
+   inset: 0 expande a todo el viewport. z-index negativo para quedar “debajo” del contenido */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: -1;
+}
+
+/* =========
+   HEADER
+   ========= */
+
+/* Contenedor del header: distribución a los lados, alineado vertical,
+   con padding y fondo semitransparente (glass effect con blur) */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 40px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+/* Bloque con logo y nombre: alineados, con separaciones,
+   permitiendo que salte de línea si es necesario (wrap),
+   y ancho máximo para evitar que crezca demasiado */
+.logo-nombre {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 300px;
+}
+
+/* Alto fijo del logo para consistencia visual */
+.logo-nombre img {
+  height: 35px;
+}
+
+/* Estilo del nombre: tamaño mayor, color dorado, negrita,
+   evita salto de línea con nowrap, animación de entrada
+   y ligero brillo con text-shadow */
+.logo-nombre span {
+  font-size: 22px;
+  color: gold;
+  font-weight: bold;
+  white-space: nowrap;
+  animation: fadeInLeft 1s ease-out;
+  text-shadow: 1px 1px 5px rgba(255, 215, 0, 0.3);
+}
+
+/* Animación: entrada desde la izquierda con aumento de opacidad */
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Contenedor de enlaces de navegación:
+   flexible, permite saltos de línea y guarda espacio entre enlaces */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Enlaces del nav: botón pill, sin subrayado, transición suave */
+nav a {
+  padding: 8px 16px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* Estado hover y activo: fondo dorado y texto negro para contraste */
+nav a:hover,
+nav a.active {
+  background: gold;
+  color: black;
+}
+
+/* Botón especial “Entrar”: borde dorado, transparente por defecto */
+nav .btn {
+  border: 1px solid gold;
+  background: transparent;
+  transition: 0.3s;
+}
+
+/* Hover del botón: relleno dorado y texto negro */
+nav .btn:hover {
+  background-color: gold;
+  color: black;
+}
+
+/* =========
+   HERO
+   ========= */
+
+/* Sección principal: layout 2 columnas responsive,
+   espacio interno amplio y separación entre columnas */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 80px 60px;
+  gap: 40px;
+}
+
+/* Columna de texto ocupa espacio flexible */
+.texto {
+  flex: 1;
+}
+
+/* Título del hero con animación sutil de entrada vertical */
+.texto h1.efecto-titulo {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: white;
+  animation: fadeInDown 1s ease-in-out forwards;
+  opacity: 0; /* inicia invisible, se hace visible con la animación */
+}
+
+/* Keyframes para el efecto de caída suave del título */
+@keyframes fadeInDown {
+  0% { transform: translateY(-30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Párrafo introductorio: color gris claro, ancho máximo para legibilidad
+   y altura de línea amplia para lectura cómoda */
+.texto p {
+  font-size: 17px;
+  color: #dddddd;
+  margin-bottom: 30px;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+/* Botón CTA: dorado con pill grande y transición en hover */
+.cta {
+  background: gold;
+  color: black;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Hover del CTA: invierte colores para crear feedback visual */
+.cta:hover {
+  background: white;
+  color: gold;
+}
+
+/* Imagen del hero: ancho controlado, esquinas redondeadas y brillo dorado */
+.imagen img {
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px gold;
+}
+
+/* ======================
+   SECCIÓN SERVICIOS/ESENCIA
+   ====================== */
+
+/* Bloque de sección: relleno amplio, fondo semitransparente
+   y separación superior respecto al hero */
+.seccion {
+  padding: 60px 80px;
+  background-color: rgba(0, 0, 0, 0.6);
+  margin-top: 40px;
+}
+
+/* Título de sección: tamaño grande, dorado y centrado */
+.seccion h2 {
+  font-size: 30px;
+  color: gold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Grid responsive: se adaptará a 1, 2 o más columnas según ancho disponible.
+   minmax(220px, 1fr) asegura tarjetas legibles en móviles */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+/* Tarjeta de servicio: fondo oscuro, borde dorado,
+   texto centrado, negrita y transición para hover */
+.servicio {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border: 1px solid gold;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* Efecto hover: resalta con fondo dorado y texto negro */
+.servicio:hover {
+  background-color: gold;
+  color: black;
+}
+
+/* ============
+   TESTIMONIOS
+   ============ */
+
+/* Contenedor general de testimonios:
+   relleno, fondo semitransparente y centrado */
+.testimonios {
+  padding: 60px 80px;
+  background-color: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+/* Título de testimonios: dorado y con separación inferior */
+.testimonios h2 {
+  font-size: 28px;
+  color: gold;
+  margin-bottom: 30px;
+}
+
+/* Carrusel: caja que oculta desbordes y centra contenido */
+.carousel {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Cada testimonio: se posiciona sobre el otro y
+   se controla su visibilidad con opacidad y clase .active */
+.testimonio {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  font-size: 18px;
+  padding: 10px 20px;
+  max-width: 90%;
+}
+
+/* Testimonio visible en el carrusel */
+.testimonio.active {
+  opacity: 1;
+}
+
+/* ===============
+   RESPONSIVE
+   =============== */
+
+/* Ajustes en pantallas medianas y chicas */
+@media (max-width: 768px) {
+  /* Header se apila verticalmente */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Navegación también se apila y se alinea a la izquierda */
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  /* Hero se vuelve columna y centra el texto */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px;
+  }
+
+  /* Título del hero reduce tamaño para no desbordar */
+  .texto h1 {
+    font-size: 30px;
+  }
+
+  /* Imagen ocupa ancho casi completo, manteniendo proporción */
+  .imagen img {
+    width: 90%;
+  }
+}
+
+/* =========================================================
+   🔽🔽🔽  AÑADIDOS ESPECÍFICOS PARA “NUESTRA ESENCIA”  🔽🔽🔽
+   (NO se toca nada más de tu diseño; solo mejoras pedidas)
+   ========================================================= */
+
+/* Título de la sección con clase específica para facilitar efectos/target en JS */
+.titulo-seccion {
+  /* Reutiliza tipografías y colores del proyecto */
+  letter-spacing: 0.5px;            /* Separación de letras sutil */
+  text-transform: none;             /* Mantener caso normal (puedes poner uppercase si lo prefieres) */
+  margin-bottom: 40px;              /* Un poco más de aire respecto a las tarjetas */
+}
+
+/* Icono grande dorado, con espacio inferior para separarlo del h3 */
+.icono-servicio {
+  font-size: 2.4rem;                /* Tamaño del icono */
+  color: gold;                      /* Color dorado consistente */
+  margin-bottom: 12px;              /* Separación respecto al título */
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.25)); /* Brillo suave */
+}
+
+/* Títulos de cada tarjeta dentro de “servicio”.
+   (Si ya tienes h3 con estilos en otra parte, esto solo refuerza aquí) */
+.servicio h3 {
+  font-size: 1.05rem;               /* Tamaño medio, elegante y legible */
+  font-weight: 600;                 /* Ligeramente más grueso para jerarquía */
+  margin-bottom: 8px;               /* Separación con el párrafo */
+}
+
+/* Párrafos descriptivos de las tarjetas: bajar la negrita para legibilidad,
+   y mejorar el color al gris claro para contraste en fondo oscuro */
+.servicio p {
+  font-weight: 400;                 /* Normal para lectura cómoda */
+  color: #dddddd;                   /* Gris claro */
+  line-height: 1.55;                /* Altura de línea para respiración */
+}
+
+/* Pequeña mejora visual en hover: la tarjeta ya se pone dorada y el texto negro,
+   pero el icono también debe pasar a negro para mantener coherencia */
+.servicio:hover .icono-servicio {
+  color: black;                     /* Cambia icono a negro cuando la tarjeta es dorada */
+  filter: none;                     /* Quita brillo para mantener limpieza en dorado sólido */
+}
+
+/* ==== NUESTRA ESENCIA ==== */
+.titulo-seccion {
+  letter-spacing: 0.5px;
+  margin-bottom: 40px;
+}
+
+.icono-servicio {
+  font-size: 2.4rem;
+  color: gold;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.25));
+}
+
+.servicio h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.servicio p {
+  font-weight: 400;
+  color: #dddddd;
+  line-height: 1.55;
+}
+
+.servicio:hover .icono-servicio {
+  color: black;
+  filter: none;
+}
+
+
+/* Contenedor para alinear el contenido y mantener márgenes */
+  .container{
+    width:min(1100px, 92%); /* Máximo 1100px o 92% de ancho en pantallas pequeñas */
+    margin-inline:auto; /* Centrar horizontalmente */
+  }
+
+
+  /* ====== RESPONSIVE GENERAL ====== */
+
+/* Laptop/Tablet horizontal */
+@media (max-width: 1200px){
+  .trabajos-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Tablet */
+@media (max-width: 1024px){
+  .trabajos-grid { grid-template-columns: repeat(2, 1fr); }
+  nav { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .schedule__table { font-size: 14px; }
+}
+
+/* Móvil grande */
+@media (max-width: 768px){
+  .trabajos-grid { grid-template-columns: 1fr; }
+  header { flex-wrap: wrap; text-align: center; }
+  header .logo-nombre { justify-content: center; margin-bottom: 10px; }
+  header .logo-nombre span { font-size: 14px; }
+  nav { width: 100%; justify-content: center; }
+  nav a { padding: 8px; display: block; }
+  #form-cita { max-width: 100%; padding: 0 10px; }
+  .btn { width: 100%; }
+}
+
+/* Móvil pequeño */
+@media (max-width: 480px){
+  .trabajo img { height: 160px; }
+  .titulo-seccion { font-size: 20px; }
+  .subtitulo { font-size: 16px; }
+  .schedule__table th, 
+  .schedule__table td { padding: 8px; font-size: 13px; }
+  footer { font-size: 13px; padding: 12px; }
+}

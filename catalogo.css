@@ -1,0 +1,602 @@
+/* =========================================================
+   0) TOKENS — Colores, radios, sombras, fuentes
+========================================================= */
+:root {
+  --bg:           #0d0d0f;               /* Fondo general */
+  --bg-2:         #141418;               /* Fondos secundarios/drawer */
+  --text:         #ffffff;               /* Texto principal */
+  --muted:        #dddddd;               /* Texto secundario */
+  --gold:         #d4af37;               /* Dorado principal */
+  --gold-2:       #ffd76a;               /* Dorado claro/acento */
+  --card:         #17171b;               /* Fondo de tarjetas */
+  --line:         rgba(255,255,255,.12); /* Borde sutil */
+
+  --r-sm:         10px;                  /* Border radius pequeño */
+  --r-md:         12px;                  /* Border radius medio */
+  --r-lg:         16px;                  /* Border radius grande */
+  --r-pill:       999px;                 /* Pill total */
+
+  --shadow:       0 8px 24px rgba(0,0,0,.25); /* Sombra suave */
+  --blur:         blur(4px);                  /* Efecto vidrio */
+
+  --font:         'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+/* =========================================================
+   1) BASE GLOBAL — Reset mínimo + fondo + helpers
+========================================================= */
+* {
+  box-sizing: border-box;                /* Incluye borde en el cálculo */
+}
+
+html,
+body {
+  margin: 0;                             /* Sin márgenes por defecto */
+  padding: 0;                            /* Sin padding por defecto */
+}
+
+body {
+  background: url('img1.jpeg')           /* Imagen de fondo */
+              no-repeat center/cover     /* Centrada y cubriendo */
+              fixed,                     /* Fija al hacer scroll */
+              var(--bg);                 /* Color de respaldo */
+  color: var(--text);                    /* Texto en blanco */
+  font-family: var(--font);              /* Familia tipográfica */
+  line-height: 1.5;                      /* Altura de línea cómoda */
+}
+
+/* Capa oscura para legibilidad sobre la imagen */
+.overlay {
+  position: fixed;                       /* Ocupa toda la pantalla */
+  inset: 0;                              /* Top/right/bottom/left = 0 */
+  background: rgba(0,0,0,.85);           /* Negro con opacidad */
+  z-index: -1;                           /* Detrás del contenido */
+}
+
+/* Contenedor centrado y con ancho máximo controlado */
+.container {
+  width: min(1100px, 92%);               /* 1100px o 92% en móviles */
+  margin-inline: auto;                   /* Centrar horizontalmente */
+}
+
+/* Accesibilidad: foco visible con dorado */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);        /* Borde de foco */
+  outline-offset: 2px;                   /* Separación */
+  border-radius: var(--r-sm);            /* Suaviza esquinas */
+}
+
+/* =========================================================
+   2) HEADER — Tu mismo diseño (pills negro/dorado)
+========================================================= */
+header {
+  display: flex;                         /* Layout horizontal */
+  flex-wrap: wrap;                       /* Permite salto en móvil */
+  justify-content: space-between;        /* Separación lados */
+  align-items: center;                   /* Centrado vertical */
+  padding: 25px 40px;                    /* Respiración */
+  background: rgba(0,0,0,.6);            /* Fondo semitransparente */
+  backdrop-filter: var(--blur);          /* Efecto vidrio */
+  border-bottom: 1px solid var(--line);  /* Línea inferior sutil */
+}
+
+/* Bloque logo + nombre */
+.logo-nombre {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 320px;
+}
+.logo-nombre img {
+  height: 35px;                          /* Alto constante del logo */
+}
+.logo-nombre span {
+  font-size: 22px;                       /* Tamaño del nombre */
+  color: var(--gold);                    /* Dorado */
+  font-weight: 700;                      /* Negrita */
+  white-space: nowrap;                   /* Evita corte feo */
+  text-shadow: 0 0 8px rgba(255,215,0,.25); /* Brillo sutil */
+}
+
+/* Navegación principal */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+nav a {
+  padding: 8px 16px;                     /* Botón tipo pill */
+  border-radius: var(--r-pill);
+  text-decoration: none;
+  color: #fff;
+  transition: .25s;                      /* Suavidad hover */
+}
+nav a:hover,
+nav a.active {
+  background: var(--gold);               /* Relleno dorado */
+  color: #111;                           /* Texto oscuro */
+}
+
+/* Botón "Entrar" con borde dorado */
+nav .btn {
+  border: 1px solid var(--gold);
+  background: transparent;
+}
+nav .btn:hover {
+  background: var(--gold);
+  color: #111;
+}
+
+/* Botón de Carrito (pill dorado con badge) */
+nav .btn-cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  border: 0;
+  cursor: pointer;
+  background: var(--gold);
+  color: #111;
+  font-weight: 600;
+}
+nav .btn-cart:hover {
+  filter: brightness(1.05);              /* Leve realce */
+}
+nav .btn-cart .badge {
+  background: #111;
+  color: var(--gold);
+  border-radius: var(--r-pill);
+  min-width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  padding: 0 6px;
+}
+
+/* =========================================================
+   3) HERO — Encabezado de la página de catálogo
+========================================================= */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 80px 60px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.25),
+    rgba(0,0,0,.35)
+  );
+}
+.hero--catalogo {
+  padding-block: 56px;                   /* Menos alto en catálogo */
+}
+.hero .texto {
+  flex: 1;
+}
+.hero .texto .efecto-titulo {
+  font-size: 42px;
+  margin: 0 0 14px;
+}
+.hero .texto p {
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0;
+}
+.hero .imagen img {
+  width: 480px;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px var(--gold-2);
+}
+
+/* =========================================================
+   4) TOOLBAR — Filtros + Ordenar + Shuffle
+========================================================= */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.filters,
+.sorts {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Botones de filtro y shuffle */
+.filter-btn,
+.shuffle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  color: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: transform .12s ease, border-color .2s;
+  box-shadow: var(--shadow);
+}
+.filter-btn:hover,
+.shuffle-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--gold);
+}
+.filter-btn.active {
+  background: #1b1b20;
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ===== SELECT OSCURO (arreglado y legible) ===== */
+.sort-label {
+  position: relative;                    /* Para la flecha ::after */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #1b1b20;                   /* Caja oscura */
+  border: 1px solid var(--gold);         /* Borde dorado */
+  border-radius: var(--r-md);
+  overflow: visible;
+}
+.sort-label > i {
+  color: var(--gold);                     /* Icono dorado */
+}
+.sort-label select {
+  -webkit-appearance: none;               /* Quitar estilo nativo */
+  -moz-appearance: none;
+  appearance: none;
+
+  background: transparent;                /* Usa el fondo del label */
+  color: #ffffff;                          /* Texto blanco */
+  border: 0;
+  outline: 0;
+
+  font-weight: 600;
+  padding: 8px 28px 8px 6px;              /* Espacio para flecha */
+  border-radius: var(--r-md);
+  line-height: 1.2;
+  cursor: pointer;
+}
+.sort-label::after {
+  content: "\f107";                       /* Flecha FA */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  pointer-events: none;
+}
+.sort-label:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(212,175,55,.15);
+}
+.sort-label select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: var(--r-md);
+}
+/* Colores del menú (si el navegador lo permite) */
+.sort-label select option {
+  background: #0f0f12;
+  color: #ffffff;
+}
+/* Sin flecha en IE/Edge antiguos */
+.sort-label select::-ms-expand {
+  display: none;
+}
+/* Scroll del menú (WebKit) */
+.sort-label select::-webkit-scrollbar {
+  width: 10px;
+}
+.sort-label select::-webkit-scrollbar-thumb {
+  background: #2a2a30;
+  border-radius: 999px;
+}
+/* Forzar esquema oscuro para sistemas que lo imponen */
+.sort-label,
+.sort-label select,
+.sort-label select option {
+  color-scheme: dark;
+}
+
+/* =========================================================
+   5) GRID + CARDS — Tarjetas de productos (sin precios)
+========================================================= */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  padding: 22px 0 60px;
+}
+.product-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.product-thumb {
+  aspect-ratio: 4 / 3;                   /* Misma altura entre cards */
+  width: 100%;
+  object-fit: cover;
+  background: #0f0f12;
+}
+.product-body {
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+.product-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold-2);
+  font-size: .9rem;
+}
+.product-title {
+  margin: 0;
+  font-size: 1.06rem;
+}
+.product-desc {
+  margin: 0;
+  color: var(--muted);
+  min-height: 2.6em;                     /* ~2 líneas para nivelar */
+}
+.product-footer {
+  margin-top: auto;                       /* Empuja footer abajo */
+}
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.btn-add,
+.btn-buy {
+  border: 0;
+  border-radius: var(--r-md);
+  padding: 10px 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .12s, filter .12s, border-color .2s;
+}
+.btn-add {
+  background: var(--gold);
+  color: #111;
+}
+.btn-add:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+.btn-buy {
+  background: #1b1b20;
+  color: #fff;
+  border: 1px solid var(--line);
+}
+.btn-buy:hover {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   6) CARRITO — Drawer lateral (sin precios)
+========================================================= */
+.cart-drawer {
+  position: fixed;
+  inset: 0 0 0 auto;                      /* Solo lado derecho */
+  width: min(420px, 92vw);
+  background: rgba(0,0,0,.9);
+  backdrop-filter: var(--blur);
+  border-left: 1px solid var(--line);
+  transform: translateX(100%);            /* Oculto por defecto */
+  transition: transform .25s ease;        /* Animación suave */
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+.cart-drawer.open {
+  transform: translateX(0);               /* Mostrar */
+}
+.overlay-cart {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 9998;
+}
+
+/* Encabezado del carrito */
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.cart-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+.close-cart {
+  background: transparent;
+  color: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+/* Lista de ítems */
+.cart-items {
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  overflow: auto;
+  flex: 1;                                 /* Ocupa alto disponible */
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;    /* img | info | acciones */
+  gap: 10px;
+  align-items: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 10px;
+}
+.cart-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.cart-item h4 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+.cart-item .small {
+  color: #cfcfcf;
+  font-size: .9rem;
+}
+.qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 4px 6px;
+}
+.qty button {
+  background: transparent;
+  color: #fff;
+  border: 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.qty span {
+  min-width: 20px;
+  text-align: center;
+}
+.remove {
+  background: transparent;
+  color: #ff6b6b;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* Pie del carrito */
+.cart-footer {
+  padding: 14px;
+  border-top: 1px solid var(--line);
+}
+.cart-actions {
+  display: grid;
+  gap: 10px;
+}
+.btn-gold {
+  background: var(--gold);
+  color: #111;
+  border: 0;
+  border-radius: var(--r-md);
+  padding: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+}
+
+/* =========================================================
+   7) RESPONSIVE — Ajustes en pantallas pequeñas
+========================================================= */
+@media (max-width: 920px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 48px 32px;
+  }
+  .hero .texto .efecto-titulo {
+    font-size: 34px;
+  }
+  .hero .imagen img {
+    width: 90%;
+  }
+}
+@media (max-width: 720px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .actions {
+    grid-template-columns: 1fr;           /* Botones en columna */
+  }
+  header {
+    padding: 20px;
+  }
+}
+
+/* ====== RESPONSIVE GENERAL ====== */
+
+/* Laptop/Tablet horizontal */
+@media (max-width: 1200px){
+  .trabajos-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Tablet */
+@media (max-width: 1024px){
+  .trabajos-grid { grid-template-columns: repeat(2, 1fr); }
+  nav { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .schedule__table { font-size: 14px; }
+}
+
+/* Móvil grande */
+@media (max-width: 768px){
+  .trabajos-grid { grid-template-columns: 1fr; }
+  header { flex-wrap: wrap; text-align: center; }
+  header .logo-nombre { justify-content: center; margin-bottom: 10px; }
+  header .logo-nombre span { font-size: 14px; }
+  nav { width: 100%; justify-content: center; }
+  nav a { padding: 8px; display: block; }
+  #form-cita { max-width: 100%; padding: 0 10px; }
+  .btn { width: 100%; }
+}
+
+/* Móvil pequeño */
+@media (max-width: 480px){
+  .trabajo img { height: 160px; }
+  .titulo-seccion { font-size: 20px; }
+  .subtitulo { font-size: 16px; }
+  .schedule__table th, 
+  .schedule__table td { padding: 8px; font-size: 13px; }
+  footer { font-size: 13px; padding: 12px; }
+}
