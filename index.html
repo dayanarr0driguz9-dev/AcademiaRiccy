@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Meta básico para codificación correcta de caracteres -->
+  <meta charset="UTF-8" />
+  <!-- Meta para que la web sea responsive en móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Título de la pestaña del navegador -->
+  <title>Golden Agency</title>
+
+  <!-- Enlace al archivo de estilos principal (tu CSS) -->
+  <link rel="stylesheet" href="estilos.css" />
+
+  <!-- Fuente Poppins desde Google Fonts para tipografía consistente y moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CARGA DE ICONOS: Font Awesome (para usar íconos reales, no emojis) -->
+  <!-- CDN estable: versión 6.x; solo carga CSS, sin JS, suficiente para <i class="fa-..."> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Librería ScrollReveal para animaciones on-scroll (ya estaba referenciada) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js" defer></script>
+  <!-- Tu script general (si allí inicializas ScrollReveal, tomará las clases que agregamos) -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Capa oscura encima del fondo para mejorar contraste del contenido -->
+  <div class="overlay"></div>
+
+  <!-- HEADER: contiene logo/Nombre y navegación -->
+  <header>
+    <!-- Bloque con logo y nombre comercial -->
+    <div class="logo-nombre">
+      <!-- Asegúrate de que LOGOOOO.png exista en tu proyecto -->
+      <img src="LOGOOOO.png" alt="Logo" />
+      <!-- Nombre de la academia / salón -->
+      <span>Academia de Belleza Riccy's Salon Studio</span>
+    </div>
+
+    <!-- Menú de navegación principal -->
+    <nav>
+      <!-- Enlace activo (Inicio) que hace scroll a la sección "inicio" -->
+      <a href="index.html" class="active">Inicio</a>
+      <!-- Páginas internas enlazadas (apuntan a archivos o secciones) -->
+      <a href="servicios.html">Servicios</a>
+      <a href="catalogos.html">Productos</a>
+      <a href="historia.html">Historia</a>
+      <a href="reseñas.php">Reseñas</a>
+
+      <!-- Botón de acción (puede llevar a login, por ejemplo) -->
+      <a href="registro.php" class="btn">Entrar</a>
+    </nav>
+  </header>
+
+  <!-- HERO/PORTADA: bloque principal superior con claim + imagen -->
+  <main id="inicio" class="hero">
+    <!-- Columna de texto -->
+    <div class="texto">
+      <!-- Título con ligera animación (definida en CSS) -->
+      <h1 class="efecto-titulo">Academia y Salon que<br>transforma vidas con estilo</h1>
+      <!-- Párrafo descriptivo (copy de presentación) -->
+      <p>Capacitamos a futuras expertas en belleza con clases personalizadas, atencion profesional en nuestro salón y una esperiencia única en el arte de transformar.</p>
+      <!-- Llamado a la acción que lleva a la sección de servicios -->
+      <a href="servicios.html" class="cta">Ver Servicios</a>
+    </div>
+
+    <!-- Columna de imagen principal del hero -->
+    <div class="imagen">
+      <!-- Asegúrate de que miss.jpeg exista; el alt debe describir la imagen -->
+      <img src="miss.jpeg" alt="Analytics Mockup" />
+    </div>
+  </main> 
+
+  <!-- SECCIÓN DIFERENCIADORA: reemplaza “Más Sobre Nosotros” por “Nuestra Esencia”
+       Se mantiene el mismo id="servicios" para no romper enlaces existentes -->
+  <section id="servicios" class="seccion">
+    <!-- Título más original, centrado y con estilo dorado (ver CSS) -->
+    <h2 class="titulo-seccion">Nuestra Esencia</h2>
+
+    <!-- Grid responsive de “tarjetas” con íconos y descripciones -->
+    <div class="servicios-grid">
+      
+      <!-- Tarjeta 1: Capacitación Profesional -->
+      <!-- Agregamos un icono de Font Awesome con la clase utilitaria .icono-servicio -->
+      <div class="servicio sr-item">
+        <i class="fa-solid fa-chalkboard-user icono-servicio" aria-hidden="true"></i>
+        <h3>Capacitación Profesional</h3>
+        <p>Formamos a futuras expertas con técnicas actuales, asesoría cercana y práctica constante.</p>
+      </div>
+
+      <!-- Tarjeta 2: Ubicación / Visítanos -->
+      <div class="servicio sr-item">
+        <i class="fa-solid fa-map-location-dot icono-servicio" aria-hidden="true"></i>
+        <h3>Visítanos</h3>
+        <p>Estamos en una zona accesible para brindarte una experiencia cómoda y memorable.</p>
+      </div>
+
+      <!-- Tarjeta 3: Estilo y Tendencia -->
+      <div class="servicio sr-item">
+        <i class="fa-solid fa-wand-magic-sparkles icono-servicio" aria-hidden="true"></i>
+        <h3>Estilo y Tendencia</h3>
+        <p>Trabajamos con tendencias de vanguardia para transformar tu imagen con personalidad.</p>
+      </div>
+
+      <!-- Tarjeta 4: Pasión y Cuidado -->
+      <div class="servicio sr-item">
+        <i class="fa-solid fa-heart icono-servicio" aria-hidden="true"></i>
+        <h3>Pasión por el Detalle</h3>
+        <p>Cada servicio se realiza con dedicación, calidad y un enfoque humano.</p>
+      </div>
+
+    </div>
+  </section> 
+
+  <!-- =========================
+     FOOTER - PIE DE PÁGINA
+     ========================= -->
+<footer class="site-footer">
+  
+  <!-- Contenedor central para limitar el ancho del contenido -->
+  <div class="container">
+    <!-- Texto del copyright -->
+    <!-- El año se inserta automáticamente con JavaScript -->
+    <small>© <span id="year"></span> Riccy Sarmiento • Todos los derechos reservados</small>
+  </div>
+
+</footer>
+
+<!-- =========================
+     ESTILOS DEL FOOTER
+     ========================= -->
+<style>
+  /* Estilo general del footer */
+  .site-footer{
+    border-top:1px solid rgba(212,175,55,.25); /* Línea superior en dorado semi-transparente */
+    background: rgba(0,0,0,.85); /* Fondo negro con 85% opacidad */
+    padding:18px 0; /* Espacio arriba y abajo del texto */
+    text-align:center; /* Centrar el contenido */
+    color:#c9c9c9; /* Texto gris claro */
+    font-size: 14px; /* Tamaño de letra */
+  }
+
+  /* Contenedor para alinear el contenido y mantener márgenes */
+
+</style>
+
+
+ <script>
+  // Obtiene el año actual del sistema y lo coloca en el span con id="year"
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Verificamos que ScrollReveal esté disponible
+  if (typeof window.ScrollReveal !== 'function') return;
+
+  const sr = ScrollReveal({ reset: false, mobile: true, cleanup: true });
+
+  // Animar el título
+  sr.reveal('#servicios .titulo-seccion', {
+    distance: '24px',
+    origin: 'bottom',
+    duration: 700,
+    delay: 80,
+    easing: 'ease-out',
+    opacity: 0,
+    scale: 0.98
+  });
+
+  // Animar cada tarjeta
+  sr.reveal('#servicios .servicio', {
+    distance: '22px',
+    origin: 'bottom',
+    duration: 650,
+    interval: 120,
+    opacity: 0,
+    easing: 'ease-out'
+  });
+
+  // Animar el icono de cada tarjeta
+  sr.reveal('#servicios .servicio .icono-servicio', {
+    distance: '12px',
+    origin: 'top',
+    duration: 500,
+    opacity: 0,
+    delay: 100
+  });
+});
+</script>
+
+</body>
+</html>
